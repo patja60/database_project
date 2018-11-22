@@ -1,0 +1,47 @@
+/* Primary button ---------------------------------------------------------------- */
+/* normal color of the button */
+.btn-vidva {
+  color: #fff;
+  background-color: #800000;
+  border-color: #800000;
+}
+
+/* color when the button is on hover */
+.btn-vidva:hover {
+  color: #fff;
+  background-color: #b22222;
+  border-color: #b22222;
+}
+
+/* color when a button is selected (not pressed) */
+.btn-vidva:focus,
+.btn-vidva.focus {
+  box-shadow: 0 0 0 0.2rem rgba(255, 0, 0, 0.4);
+}
+
+.btn-vidva:not(:disabled):not(.disabled):active:focus,
+.btn-vidva:not(:disabled):not(.disabled).active:focus,
+.show > .btn-vidva.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.2rem rgba(255, 0, 0, 0.4);
+}
+
+/* when a button cannot be clickede*/
+.btn-vidva.disabled,
+.btn-vidva:disabled {
+  color: #fff;
+  background-color: #e57373;
+  border-color: #e57373;
+}
+
+/* color when the button is pressed */
+.btn-vidva:not(:disabled):not(.disabled):active,
+.btn-vidva:not(:disabled):not(.disabled).active,
+.show > .btn-vidva.dropdown-toggle {
+  color: #fff;
+  background-color: #800000;
+  border-color: #800000;
+}
+
+.bg-vidva {
+  background-color: #800000;
+}
