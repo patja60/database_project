@@ -18,13 +18,15 @@ class Home extends Component {
 
     this.state = {
       aName: "",
-      description: ""
+      description: "",
+      isPublic: true
     };
 
     this.onAdd = this.onAdd.bind(this);
     this.onDelete = this.onDelete.bind(this);
     this.onChange = this.onChange.bind(this);
     this.onRemove = this.onRemove.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
   }
 
   onAdd() {
@@ -37,6 +39,20 @@ class Home extends Component {
 
   onRemove() {
     console.log("Remove");
+  }
+
+  onSubmit(e) {
+    e.preventDefault();
+    console.log("Submited");
+    console.log("aName: ", this.state.aName);
+    console.log("description: ", this.state.description);
+    console.log("isPublic: ", this.state.isPublic);
+  }
+
+  handleRadioButton(number) {
+    this.setState({
+      isPublic: number === 0 ? true : false
+    });
   }
 
   onChange(e) {
@@ -57,12 +73,12 @@ class Home extends Component {
         <div className="row">
           <div className="col-sm-6">
             <Link to="/edit" className="btn btn-vidva btn-block">
-              <i class="far fa-edit" /> Edit
+              <i className="far fa-edit" /> Edit
             </Link>
           </div>
           <div className="col-sm-6">
             <Link to="/memberList" className="btn btn-vidva btn-block">
-              <i class="fas fa-list-ul" /> Member List
+              <i className="fas fa-list-ul" /> Member List
             </Link>
           </div>
         </div>
@@ -72,52 +88,61 @@ class Home extends Component {
             <strong>Announcement</strong>
           </div>
           <div className="card-body">
-            <div className="form-group">
-              <label for="message">Announcement Name</label>
+            <form onSubmit={this.onSubmit}>
+              <div className="form-group">
+                <label htmlFor="message">Announcement Name</label>
+                <input
+                  className="form-control"
+                  type="text"
+                  name="aName"
+                  minLength="2"
+                  required
+                  onChange={this.onChange}
+                  value={this.state.aName}
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="message">Description</label>
+                <textarea
+                  className="form-control"
+                  id="message"
+                  rows="3"
+                  name="description"
+                  minLength="2"
+                  required
+                  onChange={this.onChange}
+                  value={this.state.description}
+                />
+              </div>
+              <span>Public: </span>
+              <label>
+                <input
+                  className="ml-3"
+                  type="radio"
+                  name="editList"
+                  value="always"
+                  checked={this.state.isPublic === true}
+                  onChange={() => this.handleRadioButton(0)}
+                />{" "}
+                Yes
+              </label>
+              <label>
+                <input
+                  className="ml-2"
+                  type="radio"
+                  name="editList"
+                  value="never"
+                  checked={this.state.isPublic === false}
+                  onChange={() => this.handleRadioButton(1)}
+                />{" "}
+                No
+              </label>
               <input
-                className="form-control"
-                type="text"
-                name="aName"
-                onChange={this.onChange}
-                value={this.state.aName}
+                type="submit"
+                value="Add"
+                className="btn btn-primary float-right px-5"
               />
-            </div>
-            <div className="form-group">
-              <label for="message">Description</label>
-              <textarea
-                className="form-control"
-                id="message"
-                rows="3"
-                name="description"
-                onChange={this.onChange}
-                value={this.state.description}
-              />
-            </div>
-            <span>Public: </span>
-            <label>
-              <input
-                className="ml-3"
-                type="radio"
-                name="editList"
-                value="always"
-              />{" "}
-              Yes
-            </label>
-            <label>
-              <input
-                className="ml-2"
-                type="radio"
-                name="editList"
-                value="never"
-              />{" "}
-              No
-            </label>
-            <button
-              onClick={this.onAdd}
-              className="btn btn-primary float-right px-5"
-            >
-              Add
-            </button>
+            </form>
           </div>
         </div>
         <Announcement announcementList={annList} onRemove={this.onRemove} />
