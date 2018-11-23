@@ -13,4 +13,38 @@ const annList = [
   }
 ];
 
+const memberList = [
+  {
+    firstName: "Sarn",
+    lastName: "Sornpaisarn",
+    nickName: "Fudgy",
+    position: "Instructor"
+  },
+  {
+    firstName: "Thamonwan",
+    lastName: "Tangchitdee",
+    nickName: "Mosttiee",
+    position: "Registrar"
+  },
+  {
+    firstName: "Sirawit",
+    lastName: "Tantiphuwanart",
+    nickName: "Gems",
+    position: "Instructor"
+  },
+  {
+    firstName: "Thanapat",
+    lastName: "Juthavantana",
+    nickName: "Patja",
+    position: "Instructor"
+  },
+  {
+    firstName: "Thanunya",
+    lastName: "Jeerasukvet",
+    nickName: "Beem",
+    position: "Registrar"
+  }
+];
+
 export default annList;
+export { memberList };

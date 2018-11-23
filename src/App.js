@@ -8,6 +8,7 @@ import Home from "./components/Home";
 import MemberList from "./components/MemberList";
 import Edit from "./components/Edit";
 import NotFound from "./components/NotFound";
+import CampBar from "./components/parts/CampBar";
 
 class App extends Component {
   render() {
@@ -16,6 +17,7 @@ class App extends Component {
         <Router>
           <div className="App">
             <div className="container mb-5">
+              <CampBar CampName="Larn Gear" />
               <Switch>
                 <Route exact path="/" component={Home} />
                 <Route exact path="/memberList" component={MemberList} />

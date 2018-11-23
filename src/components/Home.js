@@ -7,7 +7,6 @@ import { Link } from "react-router-dom";
 //
 // } from "../actions";
 
-import CampBar from "./parts/CampBar";
 import Announcement from "./parts/Announcement";
 
 import annList from "./dummy";
@@ -47,6 +46,11 @@ class Home extends Component {
     console.log("aName: ", this.state.aName);
     console.log("description: ", this.state.description);
     console.log("isPublic: ", this.state.isPublic);
+    this.setState({
+      aName: "",
+      description: "",
+      isPublic: true
+    });
   }
 
   handleRadioButton(number) {
@@ -69,7 +73,6 @@ class Home extends Component {
     const dummy1 = dummy1;
     return (
       <div>
-        <CampBar CampName="Larn Gear" />
         <div className="row">
           <div className="col-sm-6">
             <Link to="/edit" className="btn btn-vidva btn-block">
@@ -90,7 +93,7 @@ class Home extends Component {
           <div className="card-body">
             <form onSubmit={this.onSubmit}>
               <div className="form-group">
-                <label htmlFor="message">Announcement Name</label>
+                <label htmlFor="Announcement Name">Announcement Name</label>
                 <input
                   className="form-control"
                   type="text"
@@ -102,7 +105,7 @@ class Home extends Component {
                 />
               </div>
               <div className="form-group">
-                <label htmlFor="message">Description</label>
+                <label htmlFor="Description">Description</label>
                 <textarea
                   className="form-control"
                   id="message"

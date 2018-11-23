@@ -7,21 +7,20 @@ import { Link } from "react-router-dom";
 //
 // } from "../actions";
 
+import MemberHead from "./parts/MemberHead";
+import Members from "./parts/Members";
+
+import { memberList } from "./dummy";
+
 class MemberList extends Component {
   //dummy for memberList = [{username: , name: , position: }, ...]
   render() {
     return (
       <div>
-        <div className="row">
-          <div className="col-md-6">
-            <Link to="/" className="btn btn-link">
-              <i className="fas fa-arrow-circle-left" /> Back to Camp
-            </Link>
-          </div>
+        <div className="offset-sm-1 col-sm-10">
+          <MemberHead total={120} />
+          <Members memberList={memberList} />
         </div>
-        <h1> Camp Name:</h1>
-        <h3> member:</h3>
-        <button>back</button>
       </div>
     );
   }

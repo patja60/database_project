@@ -35,14 +35,6 @@ export default ({ announcementList, onRemove }) => (
               </button>
             </div>
           </div>
-
-          {/* <div className="row mx-auto">
-            <button className="col-sm-5 btn btn-success btn-block">LIKE</button>
-            <div className="col-sm-1" />
-            <button className="col-sm-5 btn btn-success btn-block">
-              COMMENT
-            </button>
-          </div> */}
         </div>
       </div>
     ))}
