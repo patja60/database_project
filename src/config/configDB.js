@@ -1,9 +1,8 @@
 import mysql from "mysql";
 export default mysql.createConnection({
   host     : 'localhost',
-  user     : 'me',
-  password : 'secret',
-  database : 'my_db'
+  user     : 'root',
+  password : 'samsen60',
 });
 
 // https://stackoverflow.com/questions/43464908/reactjs-connection-with-database/43465998

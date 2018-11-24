@@ -7,11 +7,11 @@ export default ({ announcementList, onRemove }) => (
         <div className="card-body">
           <div className="row">
             <div className="col-sm">
-              <h5 className="card-title">{announcement.name}</h5>
+              <h5 className="card-title">{announcement.AnnouncementName}</h5>
             </div>
             <div className="col-sm">
               <button
-                onClick={() => onRemove()}
+                onClick={() => onRemove(announcement.AnnouncementID)}
                 className="btn btn-danger float-right"
               >
                 Remove
@@ -20,9 +20,9 @@ export default ({ announcementList, onRemove }) => (
           </div>
 
           <div className="card-subtitle text-muted mb-3">
-            {announcement.timeStamp}
+            {announcement.timestamp}
           </div>
-          <p className="card-text">{announcement.description}</p>
+          <p className="card-text">{announcement.Description}</p>
           <div className="row offset-sm-3 col-sm-6">
             <div className="col-sm-6">
               <button className="btn btn-outline-success btn-block">

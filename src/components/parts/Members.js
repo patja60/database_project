@@ -9,11 +9,11 @@ export default ({ memberList }) => (
             <i className="fas fa-user-circle" style={{ fontSize: "4em" }} />
           </div>
           <div className="col-sm">
-            <strong>{member.nickName}</strong>
+            <strong>{member.nickname}</strong>
             <div>
-              {member.firstName} {member.lastName}
+              {member.Firstname} {member.LastName}
             </div>
-            <div>:- {member.position}</div>
+            <div>:- {member.PosName}</div>
           </div>
           <button className="btn btn-secondary btn-sm">
             <i className="fas fa-arrow-circle-right" /> More Details
