@@ -10,8 +10,8 @@ var connection = mysql.createConnection({
 	host: 'localhost',
   port: 3306,
 	user: 'root',
-	password: 'mypassword',
-  database: 'databasename'
+	password: 'jA#48697057#Mes',
+  database: 'cucamp'
 });
 
 app.use(cors())

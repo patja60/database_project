@@ -48,12 +48,14 @@ class Home extends Component {
         campId: campId,
         announcementID: announcementID
     }
+    console.log(announcementID);
     fetch('http://localhost:5000/deleteAnnouncement', {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify(data)
     })
     .then(response => {
+      console.log(response);
       this.fetchAnnList();
     })
   }
