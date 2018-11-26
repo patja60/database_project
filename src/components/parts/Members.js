@@ -11,7 +11,7 @@ export default ({ memberList }) => (
           <div className="col-sm">
             <strong>{member.nickname}</strong>
             <div>
-              {member.Firstname} {member.LastName}
+              {member.Firstname} {member.Lastname}
             </div>
             <div>:- {member.PosName}</div>
           </div>

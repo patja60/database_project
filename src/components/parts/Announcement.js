@@ -20,7 +20,7 @@ export default ({ announcementList, onRemove }) => (
           </div>
 
           <div className="card-subtitle text-muted mb-3">
-            {announcement.timestamp}
+            {announcement.timestamp.slice(0,10)}
           </div>
           <p className="card-text">{announcement.Description}</p>
           <div className="row offset-sm-3 col-sm-6">

@@ -10,8 +10,8 @@ var connection = mysql.createConnection({
   host: "localhost",
   port: 3306,
 	user: 'root',
-	password: 'mypassword',
-  database: 'databasename'
+	password: 'jA#48697057#Mes',
+  database: 'cucamp'
 });
 
 app.use(cors());
@@ -66,6 +66,17 @@ app.post("/getCampMemberTotal", (req, res) => {
   });
 });
 
+app.get("/getAllCampType", (req, res) => {
+  connection.query("CALL getAllCampType()", function(err, rows, fields) {
+    if(!err) {
+      res.setHeader("Content-Type", "application/json");
+      res.send(JSON.stringify(rows));
+    } else {
+      console.log(err);
+    }
+  })
+});
+
 app.post("/getCampInfo", (req, res) => {
   connection.query("CALL getCampInfo(?)", req.body.campId, function(
     err,
@@ -83,10 +94,11 @@ app.post("/getCampInfo", (req, res) => {
 
 app.post("/updateCampInfo", (req, res) => {
   connection.query(
-    "CALL updateCampInfo(?, ?, ?, ?, ?, ?, ?, ?, ?)",
+    "CALL updateCampInfo(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
     [
       req.body.campId,
       req.body.name,
+      req.body.typeId,
       req.body.description,
       req.body.startDate,
       req.body.endDate,
