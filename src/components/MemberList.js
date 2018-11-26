@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import LoadingScreen from "./parts/LoadingScreen";
 import { compose } from "redux";
 import { Link } from "react-router-dom";
 
@@ -27,40 +28,44 @@ class MemberList extends Component {
 
   fetchMemberList() {
     var data = {
-        campId: campId
-    }
-    fetch('http://localhost:5000/getMemberList', {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
+      campId: campId
+    };
+    fetch("http://localhost:5000/getMemberList", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data)
     })
-    .then(response => {return response.json()})
-    .then(data => {
-      this.setState({
-        memberList: data[0]
+      .then(response => {
+        return response.json();
       })
-    })
+      .then(data => {
+        this.setState({
+          memberList: data[0]
+        });
+      });
   }
 
   fetchCampMemberTotal() {
     var data = {
-        campId: campId
-    }
-    fetch('http://localhost:5000/getCampMemberTotal', {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
+      campId: campId
+    };
+    fetch("http://localhost:5000/getCampMemberTotal", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data)
     })
-    .then(response => {return response.json()})
-    .then(data => {
-      this.setState({
-        campMember: data[0][0]['count(*)']
+      .then(response => {
+        return response.json();
       })
-    })
+      .then(data => {
+        this.setState({
+          campMember: data[0][0]["count(*)"]
+        });
+      });
   }
 
   render() {
-    if(this.state.memberList){
+    if (this.state.memberList) {
       return (
         <div>
           <div className="offset-sm-1 col-sm-10">
@@ -69,10 +74,8 @@ class MemberList extends Component {
           </div>
         </div>
       );
-    }else{
-      return (
-        <h1>Loading</h1>
-      )
+    } else {
+      return <LoadingScreen />;
     }
   }
 }

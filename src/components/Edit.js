@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 import { compose } from "redux";
 import { Link } from "react-router-dom";
 
+import LoadingScreen from "./parts/LoadingScreen";
+
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -36,29 +38,31 @@ class Edit extends Component {
 
   fetchCampInfo() {
     var data = {
-        campId: campId
-    }
-    fetch('http://localhost:5000/getCampInfo', {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
+      campId: campId
+    };
+    fetch("http://localhost:5000/getCampInfo", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data)
     })
-    .then(response => {return response.json()})
-    .then(data => {
-      console.log(data[0])
-      const campInfo = data[0][0];
-      this.setState({
-        name: campInfo.Name,
-        description: campInfo.Description,
-        location: campInfo.Location,
-        expense: campInfo.Expense,
-        studentCap: campInfo.SCap,
-        staffCap: campInfo.UCap,
-        startDate: new Date(campInfo.StartDate),
-        endDate: new Date(campInfo.EndDate),
-        fetchFinish: true
+      .then(response => {
+        return response.json();
       })
-    })
+      .then(data => {
+        console.log(data[0]);
+        const campInfo = data[0][0];
+        this.setState({
+          name: campInfo.Name,
+          description: campInfo.Description,
+          location: campInfo.Location,
+          expense: campInfo.Expense,
+          studentCap: campInfo.SCap,
+          staffCap: campInfo.UCap,
+          startDate: new Date(campInfo.StartDate),
+          endDate: new Date(campInfo.EndDate),
+          fetchFinish: true
+        });
+      });
   }
 
   onChange(e) {
@@ -91,39 +95,38 @@ class Edit extends Component {
     e.preventDefault();
     function formatDate(date) {
       var d = new Date(date),
-      month = '' + (d.getMonth() + 1),
-      day = '' + d.getDate(),
-      year = d.getFullYear();
+        month = "" + (d.getMonth() + 1),
+        day = "" + d.getDate(),
+        year = d.getFullYear();
 
-      if (month.length < 2) month = '0' + month;
-      if (day.length < 2) day = '0' + day;
+      if (month.length < 2) month = "0" + month;
+      if (day.length < 2) day = "0" + day;
 
-      return [year, month, day].join('-');
+      return [year, month, day].join("-");
     }
     var data = {
-        campId: campId,
-        name: this.state.name,
-        description: this.state.description,
-        startDate: formatDate(this.state.startDate),
-        endDate: formatDate(this.state.endDate),
-        location: this.state.location,
-        expense: this.state.expense,
-        studentCap: this.state.studentCap,
-        staffCap: this.state.staffCap,
-    }
-    fetch('http://localhost:5000/updateCampInfo', {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
+      campId: campId,
+      name: this.state.name,
+      description: this.state.description,
+      startDate: formatDate(this.state.startDate),
+      endDate: formatDate(this.state.endDate),
+      location: this.state.location,
+      expense: this.state.expense,
+      studentCap: this.state.studentCap,
+      staffCap: this.state.staffCap
+    };
+    fetch("http://localhost:5000/updateCampInfo", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data)
-    })
-    .then(response => {
-      console.log(response)
+    }).then(response => {
+      console.log(response);
       this.fetchCampInfo();
-    })
+    });
   }
 
   render() {
-    if(this.state.fetchFinish){
+    if (this.state.fetchFinish) {
       return (
         <div>
           <div className="card">
@@ -231,10 +234,8 @@ class Edit extends Component {
           </div>
         </div>
       );
-    }else{
-      return(
-        <h1>Loading</h1>
-      )
+    } else {
+      return <LoadingScreen />;
     }
   }
 }
