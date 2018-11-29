@@ -10,7 +10,7 @@ var connection = mysql.createConnection({
   host: "localhost",
   port: 3306,
 	user: 'root',
-	password: 'jA#48697057#Mes',
+	password: 'admin',
   database: 'cucamp'
 });
 
